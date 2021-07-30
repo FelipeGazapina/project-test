@@ -17,7 +17,7 @@ Ações Back-End:<br>
     - Administrador de pontos dos outros usuários<br>
     - buscar a tabela de relatórios do banco de dados<br>
 
-PEDIDOS DO SISTEMA<br><br>
+PEDIDOS DO SISTEMA<br>
 
 Nele precisa ter os seguintes requisitos:<br>
     - Login<br>
