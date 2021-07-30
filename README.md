@@ -2,36 +2,36 @@
 Sistema de lançamento de horas
 
 Este projeto é um CRUD simples de um sistema de lançamento de horas.
-Usuário pode registrar no sistema e entrar no sistema
+Usuário pode registrar no sistema e entrar no sistema<br><br>
 
 Ações do usuário:<br>
-    - Login
-    - Cadastro de usuários
-    - Cadastro de colaboradores
-    - Lançamento de pontos dos colaboradores
-    - Relatório com filtro por período com opção de ordenar por nome e data
+    - Login<br>
+    - Cadastro de usuários<br>
+    - Cadastro de colaboradores<br>
+    - Lançamento de pontos dos colaboradores<br>
+    - Relatório com filtro por período com opção de ordenar por nome e data<br><br>
 
-Ações Back-End:
-    - Confirir usuário existente
-    - Cadastrar usuário não existente
-    - Administrador de pontos dos outros usuários
-    - buscar a tabela de relatórios do banco de dados
+Ações Back-End:<br>
+    - Confirir usuário existente<br>
+    - Cadastrar usuário não existente<br>
+    - Administrador de pontos dos outros usuários<br>
+    - buscar a tabela de relatórios do banco de dados<br>
 
-PEDIDOS DO SISTEMA
+PEDIDOS DO SISTEMA<br><br>
 
-Nele precisa ter os seguintes requisitos:
-    - Login
-    - Cadastro de usuários
-    - Cadastro de colaboradores
-    - Lançamento de pontos dos colaboradores
-    - Relatório com filtro por período com opção de ordenar por nome e data
+Nele precisa ter os seguintes requisitos:<br>
+    - Login<br>
+    - Cadastro de usuários<br>
+    - Cadastro de colaboradores<br>
+    - Lançamento de pontos dos colaboradores<br>
+    - Relatório com filtro por período com opção de ordenar por nome e data<br><br>
 
-Requisitos obrigatórios:
-    - PHP sem a utilização de frameworks
-    - Banco de dados mysql ou mariadb
+Requisitos obrigatórios:<br>
+    - PHP sem a utilização de frameworks<br>
+    - Banco de dados mysql ou mariadb<br><br>
 
-GUIA DE INSTALAÇÃO
-   Neste projeto é usado o driver PDO para fazer as interações com o banco de dados. portanto é necessário
+GUIA DE INSTALAÇÃO<br>
+   Neste projeto é usado o driver PDO para fazer as interações com o banco de dados. portanto é necessário<br>
    dentro do php.ini descomentar ou inserir as seguintes linhas:
     
     extension=php_pdo.dll
