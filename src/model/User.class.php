@@ -1,6 +1,6 @@
 <?php
 
-require_once '../DB.class.php';
+require_once '/src/database/DB.class.php';
 
 class User {
     public $nome;
@@ -18,9 +18,9 @@ class User {
 
         $pdo = Banco::conectar();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "INSERT INTO pessoa (nome, user, senha) VALUES(?,?,?)";
+        $sql = "INSERT INTO users (nome_user, login_user, senha_user, status_user) VALUES(?,?,?,?)";
         $q = $pdo->prepare($sql);
-        $q->execute(array($nome, $user, $senha));
+        $q->execute(array($nome, $user, $senha, 'A'));
         Banco::desconectar();
     }
 }
