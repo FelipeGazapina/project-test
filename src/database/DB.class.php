@@ -1,9 +1,9 @@
 <?php
 class DB {
 
-    private static $dbNome = '';
-    private static $dbHost = '';
-    private static $dbUsuario = '';
+    private static $dbNome = 'project_test';
+    private static $dbHost = 'localhost';
+    private static $dbUsuario = 'root';
     private static $dbSenha = '';
 
     private static $cont = null;
@@ -12,7 +12,7 @@ class DB {
     {
         die('A função Init nao é permitido!');
     }
-    
+
     public static function conectar(){
         if(null == self::$cont)
         {
