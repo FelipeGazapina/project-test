@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/src/includes/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar usuário</title>
+    <title>Login usuário</title>
 
 </head>
 <body>
@@ -18,11 +18,8 @@
     <main class="text-center container">
         
         <!-- CADASTRO USUÁRIO -->
-        <form action="/src/?page=cadastrar&acao=criar" class="form-signup" method="POST">
-            <h3 class="mb-3 font-weight-normal">Cadastrar</h3>
-
-            <label class="sr-only" for="name">Nome</label>
-            <input id="name" name="name" class="form-control mb-3" type="text" placeholder="Seu nome" required>
+        <form action="/src/?page=home&acao=login" class="form-signup" method="POST">
+            <h3 class="mb-3 font-weight-normal">Login</h3>
 
             <label class="sr-only" for="login">Nome de usuário</label>
             <input id="login" name="user" class="form-control mb-3" type="text" placeholder="Nome de usuário" required>
@@ -30,7 +27,7 @@
             <label class="sr-only" for="pass">Senha</label>
             <input id="pass" name="password" class="form-control mb-3" type="password" placeholder="Senha" required>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit" >Cadastrar</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" >Login</button>
         </form>
         <!-- CADASTRO USUÁRIO -->
     </main>

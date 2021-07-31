@@ -1,5 +1,5 @@
 <?php
-class DB {
+class Banco {
 
     private static $dbNome = 'project_test';
     private static $dbHost = 'localhost';
