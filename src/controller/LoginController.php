@@ -19,6 +19,13 @@
                 $user->setUser_pass($_POST['password']);
                 $user->checkLogin();
 
+                $pontos = new Pontos();
+                $pontos->setId_user($user->getId_user());
+                $pontos->setPontos('0');
+                $pontos->setPontos_alterado(date("Y-m-d H:i:s"));
+                $pontos->setStatus_pontos('A');
+                $pontos->createPontos();
+
                 header('Location: http://projecttest/dashboard');
 
             } catch (\Exception $e) {

@@ -27,7 +27,7 @@
                 if($result['user_pass'] === $this->user_pass){
                     if($result['user_perm'] === 'ADM'){ 
 
-                        $sql = 'SELECT id,user_perm,name_user,user_name,status_user FROM users WHERE status_user = "A"';
+                        $sql = 'SELECT id,user_perm,name_user,user_name,status_user FROM users WHERE status_user = "A" ORDER BY `users`.`name_user` ASC';
                         
 
                         $stmt = $conn->prepare($sql);
@@ -106,6 +106,9 @@
         public function setStatus_user($status_user){ 
             $this->status_user = $status_user;
         }
+        public function getId_user(){ 
+            return $this->id;
+        }
         public function getName_user(){ 
             return $this->name_user;
         }
@@ -119,7 +122,7 @@
             return $this->status_user;
         }
 
-        public function getDados($id){ 
+        public function getDados($id,$ord = 'ASC'){ 
             $conn = Connection::getConn();
 
             $sql = 'SELECT id,user_perm,name_user,user_name,status_user FROM users WHERE id = :id';
@@ -128,16 +131,16 @@
             $stmt->bindValue(':id', $id);
 
             $stmt->execute();
-
             if($stmt->rowCount()){
                 $result = $stmt->fetch();
             
                 if($result['user_perm'] === 'ADM'){ 
 
-                    $sql = 'SELECT id,user_perm,name_user,user_name,status_user FROM users WHERE status_user = "A"';
+                    $sql = 'SELECT id,user_perm,name_user,user_name,status_user FROM users AS u WHERE status_user = "A"  ORDER BY `u`.`name_user` '. $ord;
                     
 
                     $stmt = $conn->prepare($sql);
+
                     $stmt->execute();
 
                     if($stmt->rowCount() != 0){
@@ -148,6 +151,7 @@
 
                     }
 
+
                 }else{
                     $_SESSION['user'] = array('id'=>$result['id'], 'name_user'=>$result['name_user']);
 
@@ -157,6 +161,6 @@
             
             }
 
-            throw new \Exception('Login Inválido');
+            throw new \Exception('Erro na busca');
         }
     }

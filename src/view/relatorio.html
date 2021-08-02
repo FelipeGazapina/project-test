@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/src/includes/style.css">
 
-    <title>Dashboard</title>
+    <title>Dashboard | Relatório</title>
 </head>
 <body>
     <header>
@@ -23,16 +23,30 @@
               <ul class="navbar-nav mr-auto">
                 <!-- OUTRAS AÇÕES PELA BARRA DE NAVEGAÇÃO -->
                 <li class="nav-item active">
-                  <a class="nav-link" href="http://projecttest/relatorio">Relatório</a>
+                  <a class="nav-link" href="http://projecttest/dashboard">Dashboard</a>
                 </li>
               </ul>
-              <a class="btn btn-light" href="http://projecttest/dashboard/logout">Logout</a>
+              <a class="btn btn-light" href="http://projecttest/relatorio/logout">Logout</a>
             </div>
           </nav>
     </header>
 
     <main class="container">
-      <table class='mt-5 table table-dark table-striped'>
+      <section id="filters" class="ml-auto">
+        <div class="m-3">
+          <form action="http://projecttest/relatorio" method="POST">
+            <input name="ord" type="text" value="ASC" hidden>
+            <button class="btn btn-primary">ASC</button>
+          </form>
+        </div>
+        <div class="m-3">
+          <form action="http://projecttest/relatorio" method="POST">
+            <input name="ord" type="text" value="DESC" hidden>
+            <button class="btn btn-primary">DESC</button>
+          </form>
+        </div>
+      </section>
+      <table class='table table-dark table-striped'>
         <thead>
           <tr class="">
             <th scope='col' class='text-center'>Nome de usuário</th>
@@ -50,20 +64,15 @@
               <tr class="content">
                 <th class="h3 text-center">{{usuario['name_user']}}</th>
                 <th class="text-center">
-                  <button id="menos_{{usuario['id']}}" onclick='menos(this)' class="btn btn-danger mr-2">-</button>
                   <span id="number_{{usuario['id']}}">
                     {% for pontos in pontuacao %}
                       {% for ponto in pontos %}
                         {% if usuario['id'] == ponto['id_user'] %}
                           {{ponto['pontos']}}
-                        {%endif%}
-                        {% if ponto['pontos'] == NULL %} 
-                          0
-                        {%endif%}
+                        {%endif%} 
                       {% endfor %}
                     {% endfor %}
                   </span>
-                  <button id="mais_{{usuario['id']}}" onclick='mais(this)' class="btn btn-success ml-2">+</button>
                 </th>
                 <th class="comandos">
                   <form action="/dashboard/alterar" method="POST">
@@ -104,32 +113,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script>
-        function menos(html){
-          id = html.id.split('_')
-
-          number = $(`#number_${id[1]}`).text()
-          number = parseInt(number)
-          if(number == 0){
-            $(`#number_${id[1]}`).html('0')
-            $(`#pontos_${id[1]}`).attr('value','0')
-          }else{
-            number -= 1
-            $(`#number_${id[1]}`).html(number)
-            $(`#pontos_${id[1]}`).attr('value',number)
-
-          }
-        }
-        function mais(html){
-          id = html.id.split('_')
-
-          number = $(`#number_${id[1]}`).text()
-          number = parseInt(number)
-          console.log(number)
-          number += 1
-          $(`#number_${id[1]}`).html(number)
-          $(`#pontos_${id[1]}`).attr('value',number)
-
-        }
+        
     </script>
 </body>
 </html>

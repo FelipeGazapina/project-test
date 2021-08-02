@@ -7,6 +7,7 @@
         private $id_pontos;
         private $id_user;
         private $pontos;
+        private $pontos_alterado;
         private $status_pontos;
 
 
@@ -21,11 +22,12 @@
             $stmt->execute();
 
             if($stmt->rowCount()){
-                $sql = 'UPDATE pontos SET pontos = :pontos WHERE id_user = :id_user';
+                $sql = 'UPDATE pontos SET pontos = :pontos , pontos_alterado = :pontos_alterado WHERE id_user = :id_user';
                 
                 $stmt = $conn->prepare($sql);
                 $stmt->bindValue(':id_user', $this->id_user);
                 $stmt->bindValue(':pontos', $this->pontos);
+                $stmt->bindValue(':pontos_alterado', $this->pontos_alterado);
                 $stmt->execute();
 
                 if($stmt->rowCount()){
@@ -85,6 +87,9 @@
         }
         public function setPontos($pontos){ 
             $this->pontos = $pontos;
+        }
+        public function setPontos_alterado($pontos_alterado){ 
+            $this->pontos_alterado = $pontos_alterado;
         }
         public function setStatus_pontos($status_pontos){ 
             $this->status_pontos = $status_pontos;

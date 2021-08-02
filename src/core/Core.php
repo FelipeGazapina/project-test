@@ -33,7 +33,7 @@ class Core {
             
         }
         if($this->user){
-            $pg_permition = ['DashboardController'];
+            $pg_permition = ['DashboardController', 'RelatorioController'];
 
             if(!isset($this->controller) || !in_array($this->controller,$pg_permition)){
                 $this->controller = 'DashboardController';

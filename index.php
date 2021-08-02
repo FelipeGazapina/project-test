@@ -10,6 +10,7 @@
     require_once 'src/controller/LoginController.php';
     require_once 'src/controller/DashboardController.php';
     require_once 'src/controller/CadastrarController.php';
+    require_once 'src/controller/RelatorioController.php';
 
     require_once 'src/model/User.php';
     require_once 'src/model/Pontos.php';
