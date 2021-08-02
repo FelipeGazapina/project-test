@@ -42,7 +42,7 @@ GUIA DE INSTALAÇÃO<br>
    <br><br>
    Foi utilizado um view engine chamado Twig, portanto é necessário insala-lo também.
    Primeiro se cria um arquivo composer.json na raiz do projeto. Após isso se faz o download do composer.phar https://getcomposer.org/composer.phar
-   e salvar ele na pasta raiz.
+   e salvar ele na pasta raiz.<br>
    Segundo deve entrar no terminal na pasta raiz e colocar o seguinte código:<br>
     
     php composer.phar install
@@ -51,13 +51,13 @@ GUIA DE INSTALAÇÃO<br>
    
     self::$conn = new \PDO('mysql:host=localhost;dbname=project_test', 'root','');
    
-   Quarto importar a tabela project_test, que se encontra na raiz do projeto, para seu phpMyAdmin.
+   Quarto importar a tabela project_test, que se encontra na raiz do projeto, para seu phpMyAdmin.<br><br>
     
-Após estes passos o projeto estará pronto para começar
+Após estes passos o projeto estará pronto para começar<br><br>
 
-Terá um login e senha como adiministrador:
-    login: ADM
-    senha: ADM
-e um para teste de usuário comum:
-    login: test
-    senha: test
+Terá um login e senha como adiministrador:<br>
+    login: ADM<br>
+    senha: ADM<br>
+e um para teste de usuário comum:<br>
+    login: test<br>
+    senha: test<br>
