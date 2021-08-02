@@ -1,13 +1,129 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/src/includes/style.css">
+
     <title>Dashboard</title>
 </head>
 <body>
-    DashBoard
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">Bem-Vindo {{name_user}}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <!-- OUTRAS AÇÕES PELA BARRA DE NAVEGAÇÃO -->
+              </ul>
+              <a class="btn btn-light" href="http://projecttest/dashboard/logout">Logout</a>
+            </div>
+          </nav>
+    </header>
+
+    <main class="container">
+      <table class='table'>
+        <thead>
+          <tr class="">
+            <th scope='col' class='text-center'>Nome de usuário</th>
+            <th scope='col' class='text-center'>Pontos</th>
+            {% if users %}
+              <th scope='col' class='text-center'>Comandos</th>
+            {%endif%} 
+
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+            {% for usuario in user %}
+
+              <tr class="content">
+                <th class="h3 text-center">{{usuario['name_user']}}</th>
+                <th class="text-center">
+                  <button id="menos_{{usuario['id']}}" onclick='menos(this)' class="btn btn-danger mr-2">-</button>
+                  <span id="number_{{usuario['id']}}">
+                    {% for pontos in pontuacao %}
+                      {% for ponto in pontos %}
+                        {% if usuario['id'] == ponto['id_user'] %}
+                          {{ponto['pontos']}}
+                        {%endif%} 
+                      {% endfor %}
+                    {% endfor %}
+                  </span>
+                  <button id="mais_{{usuario['id']}}" onclick='mais(this)' class="btn btn-success ml-2">+</button>
+                </th>
+                <th class="comandos">
+                  <form action="/dashboard/alterar" method="POST">
+                    <input id="id" name='id_user' type="number" value="{{usuario['id']}}" hidden>
+                    <input id="pontos_{{usuario['id']}}" name='pontos' type="number" hidden>
+                    <button class="btn btn-primary">Alterar</button>
+                  </form>
+                  <form action="/dashboard/deletar"  method="POST">
+                    <input id="id" name='id_user' type="number" value="{{usuario['id']}}" hidden>
+                    <button class="btn btn-danger">Excluir</button>
+                  </form>
+                </th>
+              </tr>
+            {% endfor %}
+          {% endfor %}
+          {% if not users %}
+          <tr class="content">
+            <th class="h3 text-center">{{name_user}}</th>
+            <th class="text-center">
+              <span id="number">
+                {% for pontos in pontuacao %}
+                  {{pontos}}
+                {% endfor %}
+              </span>
+            </th>
+            
+          </tr>
+          {%endif%} 
+
+        </tbody>
+        
+        
+     
+      </table>
+    </main>
     
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        function menos(html){
+          id = html.id.split('_')
+
+          number = $(`#number_${id[1]}`).text()
+          number = parseInt(number)
+          if(number == 0){
+            $(`#number_${id[1]}`).html('0')
+            $(`#pontos_${id[1]}`).attr('value','0')
+          }else{
+            number -= 1
+            $(`#number_${id[1]}`).html(number)
+            $(`#pontos_${id[1]}`).attr('value',number)
+
+          }
+        }
+        function mais(html){
+          id = html.id.split('_')
+
+          number = $(`#number_${id[1]}`).text()
+          number = parseInt(number)
+          console.log(number)
+          number += 1
+          $(`#number_${id[1]}`).html(number)
+          $(`#pontos_${id[1]}`).attr('value',number)
+
+        }
+    </script>
 </body>
 </html>

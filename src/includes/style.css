@@ -6,9 +6,21 @@ body{
 main{
     height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
+table{
+    width:100%;
+}
+tr.content{
+    width: 100%;
+}
+.comandos{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
 .form-signup {
     width: 100%;
     max-width: 330px;
